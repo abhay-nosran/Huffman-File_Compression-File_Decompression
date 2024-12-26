@@ -64,7 +64,7 @@ app.post('/decompress',upload.single('binFile'),(req,res) => {
 
     
 
-    exec(`decompressor.exe ${inputFilePath} ${outputFilePath}`,function(err,stdout,stderr) {
+    exec(`${exePathDecompressor} ${inputFilePath} ${outputFilePath}`,function(err,stdout,stderr) {
         if (err) {
             console.error(`Error: ${stderr}`);
             return res.status(500).send('Compression failed.');
