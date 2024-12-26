@@ -5,10 +5,15 @@ const port = 8080
 
 const multer  = require('multer')
 const { stdout, stderr } = require('process')
-const upload = multer({ dest: './uploads/' })
+// const upload = multer({ dest: './server/uploads/' })
 
 const path = require('path');
 const fs = require('fs');
+
+const uploadPath = path.join(__dirname,'uploads/') ;
+const exePathCompressor = path.join(__dirname, 'compressor.exe');
+const exePathDecompressor = path.join(__dirname, 'decompressor.exe');
+const upload = multer({ dest: `${uploadPath}` }) ;
 
 
 app.get("/",(req,res)=>{
@@ -30,7 +35,7 @@ app.post('/compress',upload.single('txtFile'),(req,res) => {
 
     
 
-    exec(`compressor.exe ${inputFilePath} ${outputFilePath}`,function(err,stdout,stderr) {
+    exec(`${exePathCompressor} ${inputFilePath} ${outputFilePath}`,function(err,stdout,stderr) {
         if (err) {
             console.error(`Error: ${stderr}`);
             return res.status(500).send('Compression failed.');
