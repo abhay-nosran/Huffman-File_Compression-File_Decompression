@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    background-image: url('./background.png'); /* Background image */
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 300px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+}
+
+.card {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.card > h3 {
+    color: yellow;
+    margin-top: 20px;
+}
+
+.container > * {
+    flex-basis: 300px;
+}
+
+/* Hides the file input */
+.custom-file-input {
+    display: none;
+}
+
+/* Label styling with smaller 2:2.5 ratio */
+.custom-file-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 45px; /* Increased margin to move it downward */
+    width: 100px;  /* Width (keeps 2:2.5 ratio) */
+    height: 125px; /* Height */
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    left: 5px; /* Slightly shift label towards the center */
+}
+
+/* Image inside the label */
+.label-img {
+    width: 1000%;  
+    height: 103%;
+    object-fit: contain; 
+    pointer-events: none;
+}
+
+/* Hover effect: moves label & image slightly up */
+.custom-file-label:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+.custom-file-label:hover .label-img {
+    transform: translateY(-0px);
+}
+
+/* Button styling */
+button {
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    width: 75%;
+    height: 45px;
+    font-weight: bold;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+button:active {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(1px);
+}
+
