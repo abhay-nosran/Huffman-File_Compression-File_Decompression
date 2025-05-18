@@ -9,7 +9,7 @@ import fs from "fs";
 import os from "os";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const port = process.env.PORT || 600;
+const port = process.env.PORT || 1200;
 
 // Determine platform-specific executable extension
 const executableExt = os.platform() === 'win32' ? '.exe' : '';
@@ -52,7 +52,7 @@ app.post('/compress', upload.single('txtFile'), (req, res) => {
     console.log(outputFilePath) ;
 
     // Use ./ prefix for Linux executables
-    const execPath = os.platform() === 'win32' ? exePathCompressor : `./${exePathCompressor}`;
+    const execPath = os.platform() === 'win32' ? exePathCompressor : `${exePathCompressor}`;
     exec(`${execPath} ${inputFilePath} ${outputFilePath}`, function(err, stdout, stderr) {
         if (err) {
             console.error(`Error: ${stderr}`);
@@ -70,6 +70,7 @@ app.post('/compress', upload.single('txtFile'), (req, res) => {
 app.post('/decompress', upload.single('binFile'), (req, res) => {
     
     const inputFilePath = `${req.file.path}.bin` ;
+    console.log(inputFilePath);
     fs.rename(req.file.path,inputFilePath,(err) =>{
         if (err) {
             return res.status(500).send('Error saving the file');
@@ -77,11 +78,11 @@ app.post('/decompress', upload.single('binFile'), (req, res) => {
     }) ;
     const outputFilePath = `${req.file.path}.txt` ;
 
-    console.log(inputFilePath) ;
-    console.log(outputFilePath) ;
+    // console.log(inputFilePath) ;
+    // console.log(outputFilePath) ;
 
     // Use ./ prefix for Linux executables
-    const execPath = os.platform() === 'win32' ? exePathDecompressor : `./${exePathDecompressor}`;
+    const execPath = os.platform() === 'win32' ? exePathDecompressor : `${exePathDecompressor}`;
     exec(`${execPath} ${inputFilePath} ${outputFilePath}`, function(err, stdout, stderr) {
         if (err) {
             console.error(`Error: ${stderr}`);
