@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "build": "g++ -o server/compressor src/compressor.cpp && g++ -o server/decompressor src/decompressor.cpp",
+    "postinstall": "npm run build",
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
