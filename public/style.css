@@ -52,6 +52,7 @@ form {
 
 .container > * {
     flex-basis: 300px;
+    width: 50vw;
 }
 
 /* Hides the file input */
@@ -80,8 +81,8 @@ form {
 
 /* Image inside the label */
 .label-img {
-    width: 1000%;  
-    height: 103%;
+    width: 100%;  
+    height: 100%;
     object-fit: contain; 
     pointer-events: none;
 }
@@ -101,8 +102,8 @@ button {
     background-color: white;
     color: black;
     font-size: 16px;
-    width: 75%;
-    height: 45px;
+    /* width: 75%;
+    height: 45px; */
     font-weight: bold;
     padding: 8px 18px;
     border: none;
@@ -123,3 +124,17 @@ button:active {
     transform: translateY(1px);
 }
 
+
+@media(max-width : 480px){
+    .container {
+    flex-direction: column;
+        align-items: center;
+        margin: 10px;
+    }
+
+    .card{
+        flex : 1 ;
+        width: 80;
+    }
+
+}
